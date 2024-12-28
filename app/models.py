@@ -23,4 +23,4 @@ class Goods(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.categories
+        return self.name
