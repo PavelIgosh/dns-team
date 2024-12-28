@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Manufacturer
+from .models import Goods
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -8,37 +8,32 @@ from django.urls import reverse_lazy
 # CRUD
 
 class GoodListView(ListView):
-    model = Manufacturer
-    template_name = '.html'
-    context_object_name = 'books'
+    model = Goods
+    template_name = 'good_list.html'
+    context_object_name = 'goods'
 
 
 class GoodCreateView(CreateView):
-    model = Manufacturer
-    template_name = '-.html'
+    model = Goods
+    template_name = 'create_goods.html'
     fields = "__all__"
-    success_url = reverse_lazy('BookList')
+    success_url = reverse_lazy('main')
 
 
 class GoodDeleteView(DeleteView):
-    model = Manufacturer
-    template_name = "-.html"
-    success_url = reverse_lazy('BookList')
+    model = Goods
+    template_name = "delete_goods.html"
+    success_url = reverse_lazy('main')
 
 
 class GoodUpdateView(UpdateView):
-    model = Manufacturer
-    template_name = '-.html'
+    model = Goods
+    template_name = 'update_goods.html'
     fields = "__all__"
     success_url = reverse_lazy('BookList')
 
 
 class GoodDetailView(DeleteView):
-    model = Manufacturer
-    template_name = "-.html"
-    context_object_name = 'book'
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['smile'] = "`(*>﹏<*)′  ||||  (❁´◡`❁)"
-    #     return context
+    model = Goods
+    template_name = "read_goods.html"
+    context_object_name = 'goods'
